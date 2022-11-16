@@ -1,0 +1,18 @@
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  name: extract-country
+  namespace: default
+  labels:
+    apps.tanzu.vmware.com/workload-type: web
+    app.kubernetes.io/part-of: extract-country
+spec:
+  source:
+    git:
+      ref:
+        branch: main
+      url: https://github.com/vmware-tanzu/application-accelerator-samples.git
+  build:
+    env:
+      - name: BP_FUNCTION
+        value: functions.Handler
