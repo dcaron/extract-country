@@ -1,0 +1,3 @@
+buildEnvs:
+  - name: BP_NATIVE_IMAGE
+    value: "true"
