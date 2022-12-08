@@ -34,8 +34,10 @@ public class Handler implements Function<Message<PositionData>, Message<Country>
     @Override
     public Message<Country> apply(Message<PositionData> msg) {
         String ceType = (String) msg.getHeaders().get("ce-type");
-        if (ceType == null || !ceType.equals("positionData")) {
-            throw new RuntimeException("Did not receive a header 'ce-type' with value 'positionData'");
+        //System.out.println(msg.getHeaders());
+
+        if (ceType == null || !ceType.equals("dev.knative.rabbitmq.event")) {
+            throw new RuntimeException("Did not receive a header 'ce-type' with value 'dev.knative.rabbitmq.event'");
         }
 
         PositionData positionData = msg.getPayload();
